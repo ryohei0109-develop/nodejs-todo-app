@@ -1,6 +1,6 @@
 # TODOアプリケーション(Node.js)
 
-# 準備
+# Node.js準備
 ```
 // package.jsonファイル生成
 $ npm init --yes
@@ -11,6 +11,9 @@ $ npm install express ejs mysql
 // nodemonパッケージインストール
 $ npm install -g nodemon
 ```
+
+# MySQL準備
+「db.sql」ファイル参照
 
 # 実行方法
 ```
