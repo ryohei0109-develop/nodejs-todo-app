@@ -1,0 +1,32 @@
+<html>
+
+<head>
+  <title>TODO App</title>
+  <%- include('common/head'); %>
+</head>
+
+<body>
+  <%- include('common/header'); %>
+
+    <main class="flex-shrink-0">
+      <div class="container">
+        <h1>Detail</h1>
+        <form action="#" action="/detail/save" method="post">
+          <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" name="title" class="form-control" value="<%= todo ? todo.title : '' %>">
+          </div>
+          <div class=" mb-3">
+            <label class="form-label">Description</label>
+            <input type="text" name="description" class="form-control" value="<%= todo ? todo.description : '' %>">
+          </div>
+          <input type="hidden" name="id" value="<%= todo ? todo.id : '' %>">
+          <input type="submit" value="Save" class="btn btn-primary" />
+        </form>
+      </div>
+    </main>
+
+    <%- include('common/footer'); %>
+</body>
+
+</html>

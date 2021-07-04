@@ -1,1 +1,63 @@
-<h1>Hello World2</h1>
+<html>
+
+<head>
+  <title>TODO App</title>
+  <%- include('common/head'); %>
+</head>
+
+<body>
+  <%- include('common/header'); %>
+
+    <main class="flex-shrink-0">
+      <div class="container">
+        <h3>TODO App created by Node.js</h3>
+
+        <button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='/detail'">Create</button>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">CreatedAt</th>
+              <th scope="col">UpdatedAt</th>
+              <th scope="col">Operation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% todos.forEach((todo)=> { %>
+              <tr>
+                <td>
+                  <%= todo.id %>
+                </td>
+                <td>
+                  <a href="/detail/<%= todo.id %>">
+                    <%= todo.title %>
+                  </a>
+                </td>
+                <td>
+                  <%= todo.description %>
+                </td>
+                <td>
+                  <%= todo.created_at %>
+                </td>
+                <td>
+                  <%= todo.updated_at %>
+                </td>
+                <td>
+                  <form action="#" action="/delete" method="post">
+                    <input type="hidden" name="id" value="<%= todo.id %>">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <%- include('common/footer'); %>
+</body>
+
+</html>

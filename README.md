@@ -5,8 +5,8 @@
 // package.jsonファイル生成
 $ npm init --yes
 
-// expressパッケージとejsパッケージをインストール
-$ npm install express ejs
+// express, ejs, mysqlパッケージをインストール
+$ npm install express ejs mysql
 
 // nodemonパッケージインストール
 $ npm install -g nodemon
