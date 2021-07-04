@@ -53,6 +53,19 @@ app.post("/save", (req, res) => {
   res.redirect("/");
 });
 
+// 削除処理
+app.post("/delete", (req, res) => {
+  const id = req.body.id;
+
+  connection.query(
+    "DELETE FROM `todos` WHERE `id` = ?",
+    [id],
+    (error, results) => {
+      res.redirect("/");
+    }
+  );
+});
+
 const insertTodo = function (title, description) {
   connection.query(
     "INSERT INTO `todos` (`title`, `description`) VALUES (?, ?)",
