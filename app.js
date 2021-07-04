@@ -14,6 +14,7 @@ const connection = mysql.createConnection({
   dateStrings: true,
 });
 
+// 一覧画面
 app.get("/", (req, res) => {
   connection.query("SELECT * FROM `todos`", (error, results) => {
     res.render("index.ejs", { todos: results });
@@ -36,5 +37,40 @@ app.get("/detail/:id", (req, res) => {
     }
   );
 });
+
+// save処理
+app.post("/save", (req, res) => {
+  const id = req.body.id;
+  const title = req.body.title;
+  const description = req.body.description;
+
+  if (id > 0) {
+    updateTodo(id, title, description);
+  } else {
+    insertTodo(title, description);
+  }
+
+  res.redirect("/");
+});
+
+const insertTodo = function (title, description) {
+  connection.query(
+    "INSERT INTO `todos` (`title`, `description`) VALUES (?, ?)",
+    [title, description],
+    (error, results) => {
+      return true;
+    }
+  );
+};
+
+const updateTodo = function (id, title, description) {
+  connection.query(
+    "UPDATE `todos` SET `title` = ?, `description` = ? WHERE `id` = ?",
+    [title, description, id],
+    (error, results) => {
+      return true;
+    }
+  );
+};
 
 app.listen(3000);
